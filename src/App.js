@@ -49,7 +49,7 @@ class App extends Component {
     const newTodoList = this.state.todoList.concat(newTask);
 
     this.setState({
-      todoList:newTodoList,
+      todoList: newTodoList,
       todoItem: ''
     })
   }
@@ -58,12 +58,14 @@ class App extends Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todoItems = {this.state.todoList} />
-        <TodoForm 
-        todoItem = {this.state.todoItem} 
-        changeHandler = {this.changeHandler}
-        addTask = {this.addTask}
-         />
+        <TodoList todoItems=
+          {this.state.todoList}
+        />
+        <TodoForm
+          todoItem={this.state.todoItem}
+          changeHandler={this.changeHandler}
+          addTask={this.addTask}
+        />
       </div>
     );
   }
