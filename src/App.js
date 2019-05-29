@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import Todo from './components/TodoComponents/Todo';
 import TodoList from './components/TodoComponents/TodoList';
-// import TodoForm from './components/TodoComponents/TodoForm';
+import TodoForm from './components/TodoComponents/TodoForm';
+import uuid from 'uuid';
 
 const todoData = [
   {
@@ -32,11 +32,38 @@ class App extends Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
+  changeHandler = (e) => {
+    this.setState({
+      todoItem: e.target.value,
+    });
+  }
+
+
+  addTask = () => {
+    const newTask = {
+      task: this.state.todoItem,
+      id: uuid(),
+      completed: false
+    };
+
+    const newTodoList = this.state.todoList.concat(newTask);
+
+    this.setState({
+      todoList:newTodoList,
+      todoItem: ''
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todoItems = {this.state.todoList} />
+        <TodoForm 
+        todoItem = {this.state.todoItem} 
+        changeHandler = {this.changeHandler}
+        addTask = {this.addTask}
+         />
       </div>
     );
   }
