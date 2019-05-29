@@ -1,12 +1,9 @@
 import React from 'react';
 
-function Todo(props) {
-    let { todos } = props;
-    return (
-        todos.map(item => {
-            return <div>{item}</div>
-        })
-    )
+const Todo = (props) => {
+    let { todo } = props;
+    return <div>{todo}</div>
+
 }
 
 export default Todo;
