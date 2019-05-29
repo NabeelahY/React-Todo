@@ -23,7 +23,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoList: todoData
+      todoList: todoData,
+      todoItem: ''
     }
   }
   // you will need a place to store your state in this component.
