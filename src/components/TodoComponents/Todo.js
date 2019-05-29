@@ -2,8 +2,8 @@ import React from 'react';
 
 
 const Todo = (props) => {
-    let { todo, id } = props;
-    return <div key = {id}>{todo}</div>
+    let { todo } = props;
+    return <div>{todo}</div>
 
 }
 

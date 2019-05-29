@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
-import uuid from 'uuid';
 
 const todoData = [
   {
@@ -42,7 +41,7 @@ class App extends Component {
   addTask = () => {
     const newTask = {
       task: this.state.todoItem,
-      id: uuid(),
+      id: Date.now(),
       completed: false
     };
 
