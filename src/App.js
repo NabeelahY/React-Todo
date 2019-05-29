@@ -37,6 +37,11 @@ class App extends Component {
     });
   }
 
+  keyDown = (e) => {
+    if(e.key === 'Enter') {
+      this.addTask()
+    }
+  }
 
   addTask = () => {
     const newTask = {
@@ -63,6 +68,7 @@ class App extends Component {
         <TodoForm
           todoItem={this.state.todoItem}
           changeHandler={this.changeHandler}
+          keyChange = {this.keyDown}
           addTask={this.addTask}
         />
       </div>
