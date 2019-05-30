@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import TodoSearch from './components/TodoComponents/TodoSearch';
 import './components/TodoComponents/Todo.css'
 const todoData = [
   {
@@ -25,7 +26,8 @@ class App extends Component {
     super(props);
     this.state = {
       todoList: todoData,
-      todoItem: ''
+      todoItem: '',
+      searchItem: ''
     }
   }
   // you will need a place to store your state in this component.
@@ -44,18 +46,20 @@ class App extends Component {
   }
 
   addTask = () => {
-    const newTask = {
-      task: this.state.todoItem,
-      id: Date.now(),
-      completed: false
-    };
-
-    const newTodoList = this.state.todoList.concat(newTask);
-
-    this.setState({
-      todoList: newTodoList,
-      todoItem: ''
-    })
+    if(this.state.todoItem.trim()) {
+      const newTask = {
+        task: this.state.todoItem,
+        id: Date.now(),
+        completed: false
+      };
+  
+      const newTodoList = this.state.todoList.concat(newTask);
+  
+      this.setState({
+        todoList: newTodoList,
+        todoItem: ''
+      })
+    }
   }
 
   toggleComplete = (id) => {
@@ -75,11 +79,35 @@ class App extends Component {
     }))
   }
 
+  searchHandler = (e) => {
+    this.setState({
+      searchItem: e.target.value,
+    });
+  }
+
+  search = () => {
+    this.setState(state => ({
+      todoList: state.todoList.include()
+    }))
+  }
 
   render() {
     return (
       <div className='todo-container'>
         <h2>Welcome to your Todo App!</h2>
+        <div>
+          <TodoSearch
+          value={this.state.searchItem}
+          search={this.searchHandler}
+           />
+        </div>
+        <div>
+          <TodoList todoItems=
+            {this.state.todoList}
+            toggleComplete={this.toggleComplete}
+            searchQuery = {this.state.searchItem}
+          />
+        </div>
         <div>
           <TodoForm
             todoItem={this.state.todoItem}
@@ -87,12 +115,6 @@ class App extends Component {
             keyChange={this.keyDown}
             addTask={this.addTask}
             clear={this.clearCompleted}
-          />
-        </div>
-        <div>
-          <TodoList todoItems=
-            {this.state.todoList}
-            toggleComplete={this.toggleComplete}
           />
         </div>
       </div>

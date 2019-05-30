@@ -5,10 +5,13 @@ import Todo from './Todo'
 // feel free to change this component.js into TodoList.js
 
 const TodoList = (props) => {
-    let { todoItems, toggleComplete } = props;
+    let { todoItems, toggleComplete, searchQuery } = props;
     return (
+        // eslint-disable-next-line array-callback-return
         todoItems.map(todo => {
-           return <Todo todo = { todo.task } key = {todo.id} toggleComplete = { toggleComplete } id = {todo.id} complete = {todo.completed} />
+            if(todo.task.toLowerCase().includes(searchQuery)){
+                return <Todo todo = { todo.task } key = {todo.id} toggleComplete = { toggleComplete } id = {todo.id} complete = {todo.completed} />
+            }
         })
     )         
 }
