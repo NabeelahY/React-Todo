@@ -1,3 +1,9 @@
+.todo-container{
+    margin: 0 auto;
+    padding: 2rem;
+    width: 40%
+}
+
 .strikeThrough {
     text-decoration: line-through;
 }
@@ -5,3 +11,4 @@
 .strikeThrough:hover {
     cursor: pointer;
 }
+

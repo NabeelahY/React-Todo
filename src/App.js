@@ -61,7 +61,7 @@ class App extends Component {
   toggleComplete = (id) => {
     this.setState(state => ({
       todoList: state.todoList.map(task => {
-        if (task.id === id) { 
+        if (task.id === id) {
           task.completed = !task.completed
         }
         return task;
@@ -78,19 +78,23 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='todo-container'>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todoItems=
-          {this.state.todoList}
-          toggleComplete = {this.toggleComplete}
-        />
-        <TodoForm
-          todoItem={this.state.todoItem}
-          changeHandler={this.changeHandler}
-          keyChange={this.keyDown}
-          addTask={this.addTask}
-          clear={this.clearCompleted}
-        />
+        <div>
+          <TodoForm
+            todoItem={this.state.todoItem}
+            changeHandler={this.changeHandler}
+            keyChange={this.keyDown}
+            addTask={this.addTask}
+            clear={this.clearCompleted}
+          />
+        </div>
+        <div>
+          <TodoList todoItems=
+            {this.state.todoList}
+            toggleComplete={this.toggleComplete}
+          />
+        </div>
       </div>
     );
   }
