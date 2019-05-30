@@ -2,24 +2,8 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoSearch from './components/TodoComponents/TodoSearch';
-import './components/TodoComponents/Todo.css'
-const todoData = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  },
-  {
-    task: 'Do Assignment',
-    id: 123653098553,
-    completed: false
-  }
-]
+import './components/TodoComponents/Todo.css';
+import todoData from './components/TodoComponents/TodoData';
 
 class App extends Component {
   constructor(props) {
@@ -49,7 +33,7 @@ class App extends Component {
     if(this.state.todoItem.trim()) {
       const newTask = {
         task: this.state.todoItem,
-        id: Date.now(),
+        id: new Date(),
         completed: false
       };
   

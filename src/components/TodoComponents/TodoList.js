@@ -4,8 +4,7 @@ import Todo from './Todo'
 // your components will all go in this `component` directory.
 // feel free to change this component.js into TodoList.js
 
-const TodoList = (props) => {
-    let { todoItems, toggleComplete, searchQuery } = props;
+const TodoList = ({ todoItems, toggleComplete, searchQuery }) => {
     return (
         // eslint-disable-next-line array-callback-return
         todoItems.map(todo => {

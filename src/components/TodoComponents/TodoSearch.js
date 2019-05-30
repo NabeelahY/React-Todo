@@ -1,8 +1,6 @@
 import React from 'react';
 
-const TodoSearch = (props) => {
-    let { query, search } = props;
-
+const TodoSearch = ({ query, search }) => {
     return (
         <div>
             <input 
