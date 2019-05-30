@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoForm ({ todoItem, changeHandler, keyChange, addTask }) {
+function TodoForm ({ todoItem, changeHandler, keyChange, addTask, clear }) {
     return (
         <div>
             <input 
@@ -11,7 +11,7 @@ function TodoForm ({ todoItem, changeHandler, keyChange, addTask }) {
                 placeholder = 'Add Todo...'
             />
             <button onClick = {addTask}>Add Todo</button>
-            <button>Clear Completed</button>
+            <button onClick = {clear}>Clear Completed</button>
         </div>
     )
 }

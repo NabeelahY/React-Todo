@@ -69,6 +69,12 @@ class App extends Component {
     }))
   }
 
+  clearCompleted = () => {
+    this.setState(state => ({
+      todoList: state.todoList.filter(task => !task.completed)
+    }))
+  }
+
 
   render() {
     return (
@@ -83,6 +89,7 @@ class App extends Component {
           changeHandler={this.changeHandler}
           keyChange={this.keyDown}
           addTask={this.addTask}
+          clear={this.clearCompleted}
         />
       </div>
     );
