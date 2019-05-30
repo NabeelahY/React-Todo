@@ -8,7 +8,9 @@ const TodoList = ({ todoItems, toggleComplete, searchQuery }) => {
     return (
         // eslint-disable-next-line array-callback-return
         todoItems.map(todo => {
-            if(todo.task.toLowerCase().includes(searchQuery)){
+            const currTodo = todo.task.toLowerCase();
+            const searchTerms = searchQuery.toLowerCase()
+            if(currTodo.includes(searchTerms)){
                 return <Todo todo = { todo.task } key = {todo.id} toggleComplete = { toggleComplete } id = {todo.id} complete = {todo.completed} />
             }
         })

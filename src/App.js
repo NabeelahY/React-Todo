@@ -69,11 +69,6 @@ class App extends Component {
     });
   }
 
-  search = () => {
-    this.setState(state => ({
-      todoList: state.todoList.include()
-    }))
-  }
 
   render() {
     return (
