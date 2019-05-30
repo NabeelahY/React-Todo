@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
-
+import './components/TodoComponents/Todo.css'
 const todoData = [
   {
     task: 'Organize Garage',
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   keyDown = (e) => {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       this.addTask()
     }
   }
@@ -58,17 +58,30 @@ class App extends Component {
     })
   }
 
+  toggleComplete = (id) => {
+    this.setState(state => ({
+      todoList: state.todoList.map(task => {
+        if (task.id === id) { 
+          task.completed = !task.completed
+        }
+        return task;
+      })
+    }))
+  }
+
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todoItems=
           {this.state.todoList}
+          toggleComplete = {this.toggleComplete}
         />
         <TodoForm
           todoItem={this.state.todoItem}
           changeHandler={this.changeHandler}
-          keyChange = {this.keyDown}
+          keyChange={this.keyDown}
           addTask={this.addTask}
         />
       </div>
